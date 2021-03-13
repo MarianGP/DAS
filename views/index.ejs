@@ -1,0 +1,104 @@
+<%- include('header.ejs') %>
+
+<body>
+
+<div class="container">
+    <br><br><br>
+    <h1>Password Generator</h1>
+    <hr>
+    <br>
+    <form method="POST" id="contact-form">
+        <div class="form-row">
+            <div class="col-md-10 mb-6">
+                <label for="validationServer01">Password Length</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend1">Length</span>
+                    </div>
+                    <input type="number" class="form-control" id="validationServer01"
+                           placeholder="5-20" name="pass_length"
+                           min="5" max="20"
+                           required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please choose password length.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-10 mb-6">
+                <label for="validationServer02">How many password alternatives you want?</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend2">Rows</span>
+                    </div>
+                    <input type="number" class="form-control" id="validationServer02" placeholder="5-20"
+                           name="numb_rows"
+                           min="5" max="20"
+                           required>
+                    <!--                    class="is-valid" or is-invalid-->
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please choose n° of password to return.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-10 mb-6">
+                <label for="validationServerUsername">Alphabet</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend3">A</span>
+                    </div>
+                    <input type="text" class="form-control" id="validationServerUsername" name="alphabet"
+                           maxlength="30"
+                           min="6" max="30"
+                           minlength="6"
+                           placeholder="Example: !ABC123" aria-describedby="inputGroupPrepend3" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please choose an Alphabet.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+</div>
+<br><br>
+
+<% var message;
+    if(message) { %>
+    <p class="alert"><%= message; %></p>
+<% } %>
+
+<div class="container">
+    <%  var data = {numb_rows: 0, pass_length: 0};
+        if(allPasswords !== undefined) { %>
+        <p>Generated <%= data.numb_rows %> passwords with a length of <%= data.pass_length %></p>
+        <hr>
+        <div id="allPasswords">
+            <ul>
+                <% var i = 0;
+                allPasswords.forEach(password => { i++; %>
+                <li><span><b>Password <%= i %>: </b></span><%= password %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+</div>
+
+<%- include('footer.ejs') %>
