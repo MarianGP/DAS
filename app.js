@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', urlencodedParser, function (req, res) {
-
     if(!req.body) return res.sendStatus(400);
     var setUp = req.body;
 
@@ -59,67 +58,3 @@ function generatePassword(setUp) {
     }
     return retVal;
 }
-
-
-// const server = http.createServer((req, res) => {
-//
-//     let file_path = path.join(
-//         __dirname,
-//         "public",
-//         req.url === "/" ? "index.ejs" : req.url
-//     );
-//     console.log(file_path);
-//
-//     let ext_name = path.extname(file_path);
-//     let content_type = "text/html";
-//
-//     switch (ext_name) {
-//         case ".jpg":
-//             content_type = "image/jpg";
-//             break;
-//         case ".js":
-//             content_type = "text/javascript";
-//             break;
-//         case ".json":
-//             content_type = "application/json";
-//             break;
-//         case ".css":
-//             content_type = "text/css";
-//             break;
-//         case ".png":
-//             content_type = "image/png";
-//             break;
-//         case ".ico":
-//             content_type = "image/x-icon";
-//             break;
-//     }
-//
-//
-//     if (content_type === "text/html" && ext_name === "") file_path += ".ejs";
-//
-//     fs.readFile(file_path, (err, content) => {
-//         if (err) {
-//             if (err.code === "ENOENT") { // url not found
-//                 fs.readFile(
-//                     path.join(__dirname, "public", "404.ejs"),
-//                     (err, content) => {
-//                         res.writeHead(404, { "Content-Type": "text/html" });
-//                         res.end(content, "utf8");
-//                     }
-//                 );
-//             } else {
-//                 res.writeHead(500);
-//                 res.end(`Server Error: ${err.code}`);
-//             }
-//         } else {
-//             res.writeHead(200, { "Content-Type": content_type });
-//             res.end(content, "utf8");
-//         }
-//     });
-// });
-// const PORT = process.env.PORT || 5000;
-// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// console.log("hello!");
-// res.sendFile(path.join(__dirname+'/index.ejs'), { title: "Hey", message: "Hello there!" });
-
-

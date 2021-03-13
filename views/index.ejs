@@ -1,7 +1,5 @@
 <%- include('header.ejs') %>
-
 <body>
-
 <div class="container">
     <br><br><br>
     <h1>Password Generator</h1>
@@ -49,7 +47,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!--  input 2  -->
         <br>
         <div class="form-row">
             <div class="col-md-10 mb-6">
@@ -71,34 +69,30 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <hr>
-        <br>
+        </div> <!--  input 3  -->
+        <br><hr><br>
         <button class="btn btn-primary" type="submit">Submit form</button>
     </form>
 </div>
 <br><br>
-
 <% var message;
     if(message) { %>
     <p class="alert"><%= message; %></p>
 <% } %>
-
 <div class="container">
-    <%  var data = {numb_rows: 0, pass_length: 0};
+    <%  var data = {numb_rows: data.numb_rows, pass_length: data.pass_length};
+        var allPasswords;
         if(allPasswords !== undefined) { %>
-        <p>Generated <%= data.numb_rows %> passwords with a length of <%= data.pass_length %></p>
-        <hr>
-        <div id="allPasswords">
-            <ul>
-                <% var i = 0;
-                allPasswords.forEach(password => { i++; %>
-                <li><span><b>Password <%= i %>: </b></span><%= password %></li>
-                <% }); %>
-            </ul>
-        </div>
+            <p>Generated <%= data.numb_rows %> passwords with a length of <%= data.pass_length %></p>
+            <hr>
+            <div id="allPasswords">
+                <ul>
+                    <% var i = 0;
+                    allPasswords.forEach(password => { i++; %>
+                    <li><span><b>Password <%= i %>: </b></span><%= password %></li>
+                    <% }); %>
+                </ul>
+            </div>
     <% } %>
 </div>
-
 <%- include('footer.ejs') %>
